@@ -3,6 +3,8 @@ package com.example.quoraappclone.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Set;
+
 @Entity
 @Data
 public class Question extends BaseModel {
@@ -16,7 +18,7 @@ public class Question extends BaseModel {
             joinColumns = @JoinColumn(name = "question_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
-    private java.util.Set<Tag> tags;
+    private Set<Tag> tags;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

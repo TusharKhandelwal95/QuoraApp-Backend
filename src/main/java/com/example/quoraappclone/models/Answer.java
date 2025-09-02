@@ -20,7 +20,7 @@ public class Answer extends BaseModel{
     private User user;
 
     @OneToMany(mappedBy = "answer")
-    private Set<Answer> answers;
+    private Set<Comment> comments;
 
     @ManyToMany
     @JoinTable(

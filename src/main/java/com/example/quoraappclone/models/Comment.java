@@ -21,9 +21,13 @@ public class Comment extends BaseModel{
     @OneToMany(mappedBy = "parentComment")
     private Set<Comment> replies;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     @ManyToMany
     @JoinTable(
-            name = "comment_user",
+            name = "comment_likes",
             joinColumns = @JoinColumn(name = "comment_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
