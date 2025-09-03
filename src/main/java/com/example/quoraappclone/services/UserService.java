@@ -38,4 +38,11 @@ public class UserService {
     public void deleteUser(Long id){
         userRepository.deleteById(id);
     }
+
+    public void followTag(Long userId, Long tagId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+        var tag = tagRepository.findById(tagId).orElseThrow(() -> new RuntimeException("Tag not found"));
+        user.getFollowedTags().add(tag);
+        userRepository.save(user);
+    }
 }
